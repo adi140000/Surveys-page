@@ -1,0 +1,22 @@
+.reg{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .reg_part{
+        padding: 1vw;
+        display: flex;
+        flex-direction: column;
+        input{
+            width: 30vw;
+            border-radius:1vw;
+            padding: .8vw;
+        }
+    }
+
+    .btn{
+        box-sizing: border-box;
+        margin-top: 2.5vw;
+        text-align: center;
+    }
+    
+}

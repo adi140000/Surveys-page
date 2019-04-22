@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router} from "react-router-dom";
 import "./style.scss";
 import Header from "./header/Header"
 import Main from "./main/Main";
@@ -9,9 +10,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
-        <Main />
-        <Footer />
+        <Router>
+          <Header />
+          <Main />
+          <Footer />
+        </Router>
       </>
     )
   }

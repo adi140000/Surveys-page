@@ -12,7 +12,7 @@ body{
     color: white;
     font-family: 'Arvo', serif;
     min-height: 100vh;  
-    font-size: 2vw;  
+    font-size: 2vw;      
 }
 
 .btn{
@@ -22,6 +22,7 @@ body{
     border-radius: 0.8vw;
     font-weight: bold;
     font-size: 0.7em ;
+    color:white;
     cursor: pointer;
     &.btn_login{
         background-color: #158136
@@ -45,6 +46,11 @@ body{
         opacity: 0;
     }
 }
+
+.link{
+    text-decoration: none;
+    color: white                    
+}         
 
 @import "./header/Header";
 @import "./main/Main";

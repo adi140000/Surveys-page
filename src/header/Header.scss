@@ -30,10 +30,11 @@ header{
             width: 50%;
             display: flex;
             justify-content: space-between;            
-            list-style: none;
+            list-style: none;            
             li{
                 cursor: pointer;
-                position: relative;
+                position: relative;          
+                
                 &::after{
                     content: "";
                     position:absolute;
