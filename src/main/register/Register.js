@@ -3,25 +3,49 @@ import React, { Component } from 'react';
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            login: "",
+            pass1: "",
+            pass2: "",
+            email: ""
+        }
     }
+
+    handleChange = (e) => {
+        console.log(e.target.id);
+        this.setState({
+            [e.target.id]: e.target.value,
+        })
+
+    }
+
+    handleSubmit = (e) => {
+        this.setState({
+            login: "",
+            pass1: "",
+            pass2: "",
+            email: ""
+        })
+        e.preventDefault();
+    }
+
     render() {
-        return (<form className="reg">
+        return (<form onSubmit={this.handleSubmit} className="reg">
             <div className="reg_part">
-                <label htmlFor="Login">Login</label>
-                <input id="Login"></input>
+                <label htmlFor="login">Login</label>
+                <input value={this.state.login} onChange={this.handleChange} id="login"></input>
             </div>
             <div className="reg_part">
                 <label htmlFor="pass1">Password</label>
-                <input id="pass1" type="password"></input>
+                <input value={this.state.pass1} onChange={this.handleChange} id="pass1" type="password"></input>
             </div>
             <div className="reg_part">
                 <label htmlFor="pass2">Password</label>
-                <input id="pass2" type="password"></input>
+                <input value={this.state.pass2} onChange={this.handleChange} id="pass2" type="password"></input>
             </div>
             <div className="reg_part">
                 <label htmlFor="mail">Email</label>
-                <input id="mail" type="email"></input>
+                <input value={this.state.email} onChange={this.handleChange} id="email" type="email"></input>
             </div>
             <input className="btn btn_register" type="submit" value="Registr now"></input>
         </form >);

@@ -50,7 +50,11 @@ body{
 .link{
     text-decoration: none;
     color: white                    
-}         
+}  
+input{
+    font-weight: bold;
+    font-family: 'Arvo', serif;
+}       
 
 @import "./header/Header";
 @import "./main/Main";
