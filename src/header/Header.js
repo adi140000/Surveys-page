@@ -15,7 +15,7 @@ const Header = () => {
 
                 </ul>
                 <div className="btns">
-                    <button className="btn btn_login btns_children">Log in</button>
+                    <Link className="link" to="/login"><button className="btn btn_login btns_children">Log in</button></Link>
                     <Link className="link" to="/register"><button className="btn btn_register btns_children">Register</button></Link>
                 </div>
 

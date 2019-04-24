@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
-import Register from "./register/Register"
+import Register from "./register/Register";
+import Login from "./login/Login"
 
 class Main extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class Main extends Component {
                 <Route path="/suv/" render={() => (<div>suv</div>)} />
                 <Route path="/create/" render={() => (<div>create</div>)} />
                 <Route path="/register/" component={Register} />
+                <Route path="/login/" component={Login} />
             </Switch>
 
         </main>);

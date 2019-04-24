@@ -30,7 +30,7 @@ class Register extends Component {
     }
 
     render() {
-        return (<form onSubmit={this.handleSubmit} className="reg">
+        return (<form onSubmit={this.handleSubmit} className="fill_data">
             <div className="reg_part">
                 <label htmlFor="login">Login</label>
                 <input value={this.state.login} onChange={this.handleChange} id="login"></input>

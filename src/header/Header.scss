@@ -33,8 +33,7 @@ header{
             list-style: none;            
             li{
                 cursor: pointer;
-                position: relative;          
-                
+                position: relative;
                 &::after{
                     content: "";
                     position:absolute;
@@ -45,7 +44,9 @@ header{
                     background-color:yellow;
                     transition:0.2s;
                      
-                }
+                } 
+                
+               
                 &:hover::after{
                     width: 100%;
                 }
