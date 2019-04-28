@@ -14,11 +14,20 @@ main{
             position: relative;
            label{
               margin:.6vw;
+              i{
+                  font-size: .6em;
+              }
            }
             input{
                 width: 30vw;
                 border-radius:1vw;
                 padding: .8vw;
+                outline: none;
+                border: transparent .2vw solid;
+                transition: .2s;
+                &:focus{
+                    border: yellow .2vw solid ;
+                }
             }
         }
     

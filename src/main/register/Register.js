@@ -40,7 +40,7 @@ class Register extends Component {
                 <input value={this.state.pass1} onChange={this.handleChange} id="pass1" type="password"></input>
             </div>
             <div className="reg_part">
-                <label htmlFor="pass2">Password</label>
+                <label htmlFor="pass2">Password <i>(confirm password)</i></label>
                 <input value={this.state.pass2} onChange={this.handleChange} id="pass2" type="password"></input>
             </div>
             <div className="reg_part">
