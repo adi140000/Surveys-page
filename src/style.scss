@@ -1,5 +1,7 @@
 $color-main: #b042f4;
 $color-other:#a472dd;
+$color-fork:#158136;
+$color-strong:#b8220e;
 
 *{
     box-sizing: border-box;
@@ -26,10 +28,10 @@ body{
     cursor: pointer;
     
     &.btn_login{
-        background-color: #158136
+        background-color: $color-fork
     }
     &.btn_register{
-        background-color: #b8220e
+        background-color: $color-strong;
     }
     &::after{
         position: absolute;
@@ -54,7 +56,7 @@ body{
 }  
 input{
     font-weight: bold;
-    font-family: 'Arvo', serif;
+    font-family: 'Arvo', serif;    
 } 
   
 

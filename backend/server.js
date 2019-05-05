@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const session = require('express-session');
 
-app.set('trust proxy', 1);
+app.use(cors())
+//app.set('trust proxy', 1);
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -20,7 +22,7 @@ app.use(function (req, res, next) {
 
 app.get("/data", (req, res, next) => {
     const { data } = req.session
-    res.json(data);
+    res.json(data.isLogin);
 })
 
 app.listen(3500, () => console.log("work"))

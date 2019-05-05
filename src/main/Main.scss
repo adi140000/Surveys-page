@@ -12,6 +12,7 @@ main{
             display: flex;
             flex-direction: column;
             position: relative;
+            margin-bottom: 1vw;
            label{
               margin:.6vw;
               i{
@@ -25,6 +26,16 @@ main{
                 outline: none;
                 border: transparent .2vw solid;
                 transition: .2s;
+                &.question{
+                    margin: 0.4vw;     
+                    width: 250% ;
+                    background-color: $color-other;                                 
+                }
+                &.option{
+                    margin: 0.2vw;     
+                    width: 120%  ;
+                    background-color: $color-other;    
+                }
                 &:focus{
                     border: yellow .2vw solid ;
                 }
@@ -41,5 +52,3 @@ main{
     
 }
 
-@import "./register/register";
-@import "./login/Login"
