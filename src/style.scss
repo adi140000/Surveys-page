@@ -14,7 +14,10 @@ body{
     color: white;
     font-family: 'Arvo', serif;
     min-height: 100vh;  
-    font-size: 2vw;      
+    width: 100vw;
+    overflow-x: hidden;
+    font-size: 2vw;    
+
 }
 
 .btn{
@@ -55,8 +58,7 @@ body{
     color: white                    
 }  
 input{
-    font-weight: bold;
-    font-family: 'Arvo', serif;    
+    font-weight: bold;    
 } 
   
 

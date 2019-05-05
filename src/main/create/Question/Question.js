@@ -20,6 +20,28 @@ class Question extends Component {
         this.counter++;
         this.send = true;
     }
+
+
+    changeOption = (e, idN) => {
+        const options = this.state.options.map(({ id, content }) => {
+            console.log(e.target.value, id, idN)
+            if (id === idN) {
+                return Object.assign({}, {
+                    id,
+                    content: e.target.value
+                })
+            }
+            return Object.assign({}, {
+                id,
+                content
+            })
+        })
+        this.setState({
+            options
+        })
+        this.send = true;
+
+    }
     componentDidUpdate = () => {
         if (this.send) {
             const { id } = this.props;
@@ -30,12 +52,11 @@ class Question extends Component {
     }
 
     render() {
-        const { id, query, options, changeQ } = this.props;
-        console.log(options);
-        const showOptions = this.state.options.map(({ id, content }) => (<Option key={id} text={content} />))
+        const { id, query, changeQ } = this.props;
+        const showOptions = this.state.options.map(({ id, content }) => (<Option key={id} id={id} change={this.changeOption} text={content} />))
         return (<div className="reg_part">
             <input className='question' id={id} onChange={changeQ} value={query}></input>
-            <button onClick={this.pushOption} className='btn btn_login'>Add Option</button>
+            <input type='button' value='Add Option' onClick={this.pushOption} className='btn btn_login'></input>
             {showOptions}
         </div>);
     }

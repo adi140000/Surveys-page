@@ -7,10 +7,14 @@ main{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        &.survey{
+            align-items: start;
+            margin-left: 2vw;
+        }
         .reg_part{
             padding: 1vw;
             display: flex;
-            flex-direction: column;
+            flex-direction: column;                      
             position: relative;
             margin-bottom: 1vw;
            label{
@@ -25,7 +29,8 @@ main{
                 padding: .8vw;
                 outline: none;
                 border: transparent .2vw solid;
-                transition: .2s;
+                transition: .2s; 
+                                                      
                 &.question{
                     margin: 0.4vw;     
                     width: 250% ;
@@ -35,7 +40,7 @@ main{
                     margin: 0.2vw;     
                     width: 120%  ;
                     background-color: $color-other;    
-                }
+                }            
                 &:focus{
                     border: yellow .2vw solid ;
                 }
@@ -46,6 +51,7 @@ main{
             box-sizing: border-box;
             margin-top: 2.5vw;
             text-align: center;
+            align-self: center;
         }
         
     }

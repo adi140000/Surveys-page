@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Option = (props) => {
-    const { text } = props;
-    return (<input value={text} onChange={() => { }} className="option">
+    const { id, text, change } = props;
+    return (<input value={text} onChange={(e) => { change(e, id) }} className="option">
     </input>);
 }
 

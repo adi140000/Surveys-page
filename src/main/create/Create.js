@@ -7,10 +7,10 @@ class Create extends Component {
 
     state = {
         questions: [],
-
     }
 
-    addQuestion = () => {
+    addQuestion = (e) => {
+        e.preventDefault();
         const questions = this.state.questions;
         const counter = this.counter;
         this.counter++;
@@ -35,7 +35,7 @@ class Create extends Component {
             questions
         })
 
-        console.log(tempState)
+
     }
 
     changeQuery = (e) => {
@@ -67,10 +67,11 @@ class Create extends Component {
             return <Question key={id} id={id} query={query} options={options} changeQ={this.changeQuery} addO={this.addOption} />
         })
         return (<section>
-            <div className="fill_data">
+            <form onSubmit={() => { }} className="survey fill_data">
                 {showQuestions}
-                <button onClick={this.addQuestion} className='btn btn_register'>Add Question</button>
-            </div>
+                <input type='button' onClick={this.addQuestion} value='Add Question' className='btn btn_register'></input>
+                <button type='submit' className='btn btn_register'>Send</button>
+            </form>
         </section>);
     }
 }
