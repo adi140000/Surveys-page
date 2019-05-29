@@ -2,59 +2,98 @@ main{
     min-height: 65vh;
     padding:  5vw;
     font-size: 0.8em;
-    .fill_data{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        &.survey{
-            align-items: start;
-            margin-left: 2vw;
-        }
-        .reg_part{
-            padding: 1vw;
-            display: flex;
-            flex-direction: column;                      
-            position: relative;
-            margin-bottom: 1vw;
-           label{
-              margin:.6vw;
-              i{
-                  font-size: .6em;
-              }
-           }
-            input{
-                width: 30vw;
-                border-radius:1vw;
-                padding: .8vw;
-                outline: none;
-                border: transparent .2vw solid;
-                transition: .2s; 
-                                                      
-                &.question{
-                    margin: 0.4vw;     
-                    width: 250% ;
-                    background-color: $color-other;                                 
+    .fill_section{
+        background-color: $color-other; 
+        border: $color-focus .2vw solid ;
+        border-radius:2vw;  
+        .fill_data{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2vw;            
+            &.survey{
+                align-items: start;
+                margin-left: 2vw;
+            }
+            .reg_part{
+                padding: 1vw;
+                display: flex;
+                flex-direction: column;       
+                align-items: center;
+                position: relative;
+                width: 100%;
+                margin-bottom: 1vw;
+                .multiply{
+                    background-color: $color-fork;
+                    width: 5vw;
+                    height: 2vw;
+                    border-radius: 30%;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;                    
+                    cursor: pointer;
+                    .multiply-child{
+                        position:absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        background-color: $color-main;
+                        transition: transform 1s ease;
+                        left: 0;
+                        right: 0;                                           
+                        border-radius: 50%;
+                        &.active{
+                            transform: translateX(3vw); 
+                        }
+                    }
                 }
-                &.option{
-                    margin: 0.2vw;     
-                    width: 120%  ;
-                    background-color: $color-other;    
-                }            
-                &:focus{
-                    border: yellow .2vw solid ;
+               label{
+                  margin:.6vw;
+                  i{
+                      font-size: .6em;
+                  }
+               }
+                input{
+                    width: 30vw;
+                    border-radius:1vw;
+                    padding: .8vw;
+                    outline: none;
+                    border: transparent .2vw solid;
+                    transition: .2s; 
+                    &.addOption{
+                        margin-left:-50%;
+                    }
+                                                          
+                    &.question{
+                        margin: 0.4vw;     
+                        width: 100% ;
+                        background-color: #ffffff;                               
+                    }
+                    &.option{
+                        margin-left:2vw; 
+                        margin-top: 1vw;    
+                        width:60%  ;
+                        background-color: $color-main;  
+                    }            
+                    &:focus{
+                        border: $color-focus .2vw solid ;
+                    }
                 }
             }
-        }
-    
-        .btn{
-            box-sizing: border-box;
-            margin-top: 2.5vw;
-            text-align: center;
-            align-self: center;
-        }
+        
+            .btn{
+                box-sizing: border-box;
+                margin-top: 2.5vw;
+                text-align: center;
+                align-self: center;
+            }
+            
         
     }
+  }
     
 }
 

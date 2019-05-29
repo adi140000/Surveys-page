@@ -17,6 +17,7 @@ class Create extends Component {
         questions.push({
             id: counter,
             query: '',
+            multiply: true,
             options: []
         })
         this.setState({
@@ -25,11 +26,12 @@ class Create extends Component {
 
     }
 
+   
     addOption = (idN, tempState) => {
 
-        const questions = this.state.questions.map(({ id, query, options }) => {
+        const questions = this.state.questions.map(({ id, query, options,multiply }) => {
             if (id === idN) options = tempState.options;
-            return Object.assign({}, { id, query, options })
+            return Object.assign({}, { id, query, options,multiply })
         })
         this.setState({
             questions
@@ -60,14 +62,34 @@ class Create extends Component {
         })
     }
 
-    render() {
+    changeMultiply = idE => {
+        idE = parseInt(idE);
         const { questions } = this.state;
-        const showQuestions = questions.map(({ id, query, options }) => {
-
-            return <Question key={id} id={id} query={query} options={options} changeQ={this.changeQuery} addO={this.addOption} />
+        const newQuestions = questions.map((data) => {
+            const { id, multiply } = data;
+            if (idE === id) {
+                data.multiply = !multiply;
+            }
+            return data
         })
-        return (<section>
-            <form onSubmit={() => { }} className="survey fill_data">
+
+        this.setState({
+            questions:newQuestions
+        })
+    }
+
+    
+
+
+    render() {
+        
+        const { questions } = this.state;
+        const showQuestions = questions.map(({ id, query, options,multiply }) => {
+
+            return <Question key={id} id={id} query={query} multiply={multiply} options={options} changeQ={this.changeQuery} changeMultiply={this.changeMultiply} addO={this.addOption} />
+        })
+        return (<section className='fill_section' >
+            <form onSubmit={() => { }} className="survey fill_data" >
                 {showQuestions}
                 <input type='button' onClick={this.addQuestion} value='Add Question' className='btn btn_register'></input>
                 <button type='submit' className='btn btn_register'>Send</button>

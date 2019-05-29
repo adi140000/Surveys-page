@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router ,Redirect} from "react-router-dom";
 import "./style.scss";
 import Header from "./header/Header"
 import Main from "./main/Main";
@@ -8,25 +8,57 @@ import Footer from "./footer/Footer";
 
 class App extends Component {
 
-  state = {
-    isLogin: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: ''
+    }
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
+    if (sessionStorage.getItem('loginSurveys')) {
+      const login = sessionStorage.getItem('loginSurveys');
+      this.setState({
+        login
+      })
+   }
+  }
 
+  logOut = () => {
+    sessionStorage.removeItem('loginSurveys');
+    this.setState({
+      login:''
+    })
+  }
 
-    fetch("http://localhost:3500/data")
+  logInMethod = (e,login,password) => {
+    e.preventDefault();      
+    fetch(`http://localhost:3500/login?login=${login}&password=${password}`)
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+      .then(data => {        
+        if (data) {
+          sessionStorage.setItem('loginSurveys', login);
+          this.setState({
+            login: login
+          })
+               
+        }     
+        
+      })
+      return true;
+
+
   }
+
+
+
   render() {
-    const { isLogin } = this.state
+    const { login } = this.state
     return (
       <>
         <Router>
-          <Header />
-          <Main decision={isLogin} />
+          <Header logOut={this.logOut} login={login} />
+          <Main login={login} logInMethod={this.logInMethod} />
           <Footer />
         </Router>
       </>

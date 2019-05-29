@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 
 
-const Header = () => {
+const Header = (props) => {
+    const { login,logOut } = props;
+    
     return (
         <header>
             <div className="logo">sur<span className="special_letter">v</span>e<span className="special_letter">y</span>s</div>
@@ -15,8 +17,16 @@ const Header = () => {
 
                 </ul>
                 <div className="btns">
-                    <Link className="link" to="/login"><button className="btn btn_login btns_children">Log in</button></Link>
-                    <Link className="link" to="/register"><button className="btn btn_register btns_children">Register</button></Link>
+                    {login ? (
+                        <>
+                            <div>{login}</div>
+                            <button onClick={logOut} className="btn btn_register btns_children">Wyloguj</button>
+                        </>) : (<>
+                            <Link className="link" to="/login">
+                            <button className="btn btn_login btns_children">Log in</button></Link>
+                            <Link className="link" to="/register"><button className="btn btn_register btns_children">Register</button></Link>
+                        </>)}
+                        
                 </div>
 
             </nav>

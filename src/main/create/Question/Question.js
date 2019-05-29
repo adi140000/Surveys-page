@@ -52,13 +52,25 @@ class Question extends Component {
     }
 
     render() {
-        const { id, query, changeQ } = this.props;
-        const showOptions = this.state.options.map(({ id, content }) => (<Option key={id} id={id} change={this.changeOption} text={content} />))
-        return (<div className="reg_part">
-            <input className='question' id={id} onChange={changeQ} value={query}></input>
-            <input type='button' value='Add Option' onClick={this.pushOption} className='btn btn_login'></input>
-            {showOptions}
-        </div>);
+        const { id, query, changeQ, changeMultiply, multiply } = this.props;
+        const showOptions = this.state.options.map(({ id, content }) => (<Option key={id} id={id} change={this.changeOption} text={content} />));
+        
+
+        return (
+            <div className="reg_part">
+                
+                <h1>{`#${id}`}</h1>
+                <input className='question' id={id} onChange={changeQ} value={query}></input>
+                <input type='button' value='Add Option' onClick={this.pushOption} className='btn btn_login addOption'></input>
+                <div className='multiply' onClick={() => {
+                    changeMultiply(id);
+                }}>
+                    <div className={`multiply-child ${multiply?'active':''}`}></div>
+                </div>
+                {showOptions}
+            </div>
+
+        );
     }
 }
 

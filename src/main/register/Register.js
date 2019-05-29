@@ -30,25 +30,29 @@ class Register extends Component {
     }
 
     render() {
-        return (<form onSubmit={this.handleSubmit} className="fill_data">
-            <div className="reg_part">
-                <label htmlFor="login">Login</label>
-                <input value={this.state.login} onChange={this.handleChange} id="login"></input>
-            </div>
-            <div className="reg_part">
-                <label htmlFor="pass1">Password</label>
-                <input value={this.state.pass1} onChange={this.handleChange} id="pass1" type="password"></input>
-            </div>
-            <div className="reg_part">
-                <label htmlFor="pass2">Password <i>(confirm password)</i></label>
-                <input value={this.state.pass2} onChange={this.handleChange} id="pass2" type="password"></input>
-            </div>
-            <div className="reg_part">
-                <label htmlFor="mail">Email</label>
-                <input value={this.state.email} onChange={this.handleChange} id="email" type="email"></input>
-            </div>
-            <input className="btn btn_register" type="submit" value="Registr now"></input>
-        </form >);
+        return (
+            <section className='fill_section'>
+                <form onSubmit={this.handleSubmit} className="fill_data">
+                    <div className="reg_part">
+                        <label htmlFor="login">Login</label>
+                        <input value={this.state.login} onChange={this.handleChange} id="login"></input>
+                    </div>
+                    <div className="reg_part">
+                        <label htmlFor="pass1">Password</label>
+                        <input value={this.state.pass1} onChange={this.handleChange} id="pass1" type="password"></input>
+                    </div>
+                    <div className="reg_part">
+                        <label htmlFor="pass2">Password <i>(confirm password)</i></label>
+                        <input value={this.state.pass2} onChange={this.handleChange} id="pass2" type="password"></input>
+                    </div>
+                    <div className="reg_part">
+                        <label htmlFor="mail">Email</label>
+                        <input value={this.state.email} onChange={this.handleChange} id="email" type="email"></input>
+                    </div>
+                    <input className="btn btn_register" type="submit" value="Registr now"></input>
+                </form >
+            </section>
+        );
     }
 }
 
