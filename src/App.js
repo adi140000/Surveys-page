@@ -11,23 +11,28 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: ''
+      login: '',
+      id:null
     }
   }
 
   componentDidMount = () => {
-    if (sessionStorage.getItem('loginSurveys')) {
+    if (sessionStorage.getItem('loginSurveys') && sessionStorage.getItem('idSurveys')) {
       const login = sessionStorage.getItem('loginSurveys');
+      const id = sessionStorage.getItem('idSurveys');
       this.setState({
-        login
+        login,
+        id
       })
    }
   }
 
   logOut = () => {
     sessionStorage.removeItem('loginSurveys');
+    sessionStorage.removeItem('idSurveys');
     this.setState({
-      login:''
+      login:'',
+      id:null
     })
   }
 
@@ -35,11 +40,14 @@ class App extends Component {
     e.preventDefault();      
     fetch(`http://localhost:3500/login?login=${login}&password=${password}`)
       .then(res => res.json())
-      .then(data => {        
+      .then(data => {  
+        console.log(data);
         if (data) {
           sessionStorage.setItem('loginSurveys', login);
+          sessionStorage.setItem('idSurveys', data);
           this.setState({
-            login: login
+            login,
+            id:data,
           })
                
         }     
@@ -53,12 +61,12 @@ class App extends Component {
 
 
   render() {
-    const { login } = this.state
+    const { login,id } = this.state
     return (
       <>
         <Router>
           <Header logOut={this.logOut} login={login} />
-          <Main login={login} logInMethod={this.logInMethod} />
+          <Main id={id} login={login} logInMethod={this.logInMethod} />
           <Footer />
         </Router>
       </>

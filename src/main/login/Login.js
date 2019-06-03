@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route ,Redirect} from "react-router-dom";
-
 
 class Login extends Component {
     constructor(props) {
@@ -28,16 +26,16 @@ class Login extends Component {
         const { login, password } = this.state;
         return (
             <section className='fill_section'>
-                <form className="fill_data">
+                <form onSubmit={(e)=>logInMethod(e,login,password)} className="fill_data">
                     <div className="reg_part">
                         <label htmlFor="login">Login</label>
-                        <input value={login} onChange={this.handleChange} id="login"></input>
+                        <input className='box' value={login} onChange={this.handleChange} id="login"></input>
                     </div>
                     <div className="reg_part">
                         <label htmlFor="pass">Password</label>
-                        <input value={password} onChange={this.handleChange} id="password" type="password"></input>
+                        <input value={password} className='box' onChange={this.handleChange} id="password" type="password"></input>
                     </div>
-                    <input className="btn btn_login" onClick={(e)=>logInMethod(e,login,password)} type="submit" value="Login"></input>
+                    <input className="btn btn_login"  type="submit" value="Login"></input>
                 </form>
             </section>);
     }

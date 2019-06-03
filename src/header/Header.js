@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-
-
 const Header = (props) => {
-    const { login,logOut } = props;
-    
+    const { login, logOut } = props;
+
     return (
         <header>
             <div className="logo">sur<span className="special_letter">v</span>e<span className="special_letter">y</span>s</div>
@@ -23,10 +21,10 @@ const Header = (props) => {
                             <button onClick={logOut} className="btn btn_register btns_children">Wyloguj</button>
                         </>) : (<>
                             <Link className="link" to="/login">
-                            <button className="btn btn_login btns_children">Log in</button></Link>
+                                <button className="btn btn_login btns_children">Log in</button></Link>
                             <Link className="link" to="/register"><button className="btn btn_register btns_children">Register</button></Link>
                         </>)}
-                        
+
                 </div>
 
             </nav>

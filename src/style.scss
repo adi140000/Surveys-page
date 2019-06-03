@@ -29,14 +29,7 @@ body{
     font-weight: bold;
     font-size: 0.7em ;
     color:white;
-    cursor: pointer;
-    
-    &.btn_login{
-        background-color: $color-fork
-    }
-    &.btn_register{
-        background-color: $color-strong;
-    }
+    cursor: pointer;    
     &::after{
         position: absolute;
         top:0;
@@ -44,14 +37,20 @@ body{
         width: 100%;
         height: 100%;
         content: "";
-        box-shadow: 0.4vw -0.2vw 0.4vw  0 rgba(0,0,0,0.4);
         border-radius: 0.8vw;
-        transition: 0.5s;
-
+        transition: 2s;
+        box-shadow: .5vw .5vw .2vw  0 rgba(0,0,0,0.4);
     }
     &:hover::after{
         opacity: 0;
+    }  
+    &.btn_login{
+        background-color: $color-fork
     }
+    &.btn_register{
+        background-color: $color-strong;
+    }
+   
 }
 
 .link{
@@ -59,7 +58,9 @@ body{
     color: white                    
 }  
 input{
-    font-weight: bold;    
+    font-weight: bold; 
+    box-shadow: .5vw .5vw .2vw  0 rgba(0,0,0,0.4);  
+    
 } 
   
 

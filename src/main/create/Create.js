@@ -6,7 +6,22 @@ class Create extends Component {
     counter = 0;
 
     state = {
+        id: null,
+        name: '',
         questions: [],
+    }
+
+    componentDidMount = () => {
+        const { id } = this.props;
+        this.setState({
+            id
+        })
+    }
+    handleName = (e) => {
+        const { value } = e.target;
+        this.setState({
+            name: value
+        })
     }
 
     addQuestion = (e) => {
@@ -26,12 +41,12 @@ class Create extends Component {
 
     }
 
-   
+
     addOption = (idN, tempState) => {
 
-        const questions = this.state.questions.map(({ id, query, options,multiply }) => {
+        const questions = this.state.questions.map(({ id, query, options, multiply }) => {
             if (id === idN) options = tempState.options;
-            return Object.assign({}, { id, query, options,multiply })
+            return Object.assign({}, { id, query, options, multiply })
         })
         this.setState({
             questions
@@ -42,16 +57,18 @@ class Create extends Component {
 
     changeQuery = (e) => {
         const idN = parseInt(e.target.id);
-        const questions = this.state.questions.map(({ id, query, options }) => {
+        const questions = this.state.questions.map(({ id, query, options, multiply }) => {
 
             if (idN === id) {
                 return Object.assign({}, {
+                    multiply,
                     id,
                     query: e.target.value,
                     options,
                 })
             }
             return Object.assign({}, {
+                multiply,
                 id,
                 query,
                 options,
@@ -74,25 +91,35 @@ class Create extends Component {
         })
 
         this.setState({
-            questions:newQuestions
+            questions: newQuestions
         })
     }
 
-    
+    sendData = (e) => {
+        const { id, name, questions } = this.state;
+        e.preventDefault();
+        fetch(`http://localhost:3500/create?id=${id}&name=${name}&questions=${JSON.stringify(questions)}`);
+
+
+    }
 
 
     render() {
-        
-        const { questions } = this.state;
-        const showQuestions = questions.map(({ id, query, options,multiply }) => {
+
+        const { questions, name } = this.state;
+        const showQuestions = questions.map(({ id, query, options, multiply }) => {
 
             return <Question key={id} id={id} query={query} multiply={multiply} options={options} changeQ={this.changeQuery} changeMultiply={this.changeMultiply} addO={this.addOption} />
         })
         return (<section className='fill_section' >
-            <form onSubmit={() => { }} className="survey fill_data" >
+            <form onSubmit={this.sendData} className="survey fill_data" >
+                <div className="name_div">
+                    <h1>Title Survey :</h1>
+                    <input className='nameSurvey' value={name} onChange={this.handleName}></input>
+                </div>
                 {showQuestions}
-                <input type='button' onClick={this.addQuestion} value='Add Question' className='btn btn_register'></input>
-                <button type='submit' className='btn btn_register'>Send</button>
+                <input type='button' onClick={this.addQuestion} value='Add Question' className=' btn btn_register'></input>
+                <input type='submit' className='btn btn_register' value='Send' />
             </form>
         </section>);
     }

@@ -6,6 +6,7 @@ main{
         background-color: $color-other; 
         border: $color-focus .2vw solid ;
         border-radius:2vw;  
+        box-shadow: .4vw .4vw .2vw 0 rgba(0,0,0,0.6);
         .fill_data{
             display:flex;
             flex-direction: column;
@@ -14,7 +15,24 @@ main{
             padding: 2vw;            
             &.survey{
                 align-items: start;
-                margin-left: 2vw;
+                margin-left: 2vw;              
+                
+                .name_div{
+                    display: flex;
+                    align-items: center; 
+                    margin-bottom: 2vw;                   
+                    .nameSurvey{
+                        text-transform: uppercase;                        
+                        margin-left: 2vw;
+                        border:0;
+                        padding:1.5vw;                        
+                        border-radius: .8vw;
+                        width: 30vw;
+                        background-color: $color-main;                        
+                        outline: none;
+                        color: #ffffff;
+                    }
+                }
             }
             .reg_part{
                 padding: 1vw;
@@ -27,7 +45,7 @@ main{
                 .multiply{
                     background-color: $color-fork;
                     width: 5vw;
-                    height: 2vw;
+                    height: 1.2vw;
                     border-radius: 30%;
                     position: absolute;
                     right: 0;
@@ -70,13 +88,15 @@ main{
                     &.question{
                         margin: 0.4vw;     
                         width: 100% ;
-                        background-color: #ffffff;                               
+                        background-color: #ffffff; 
+                        color: $color-main;                              
                     }
                     &.option{
                         margin-left:2vw; 
                         margin-top: 1vw;    
                         width:60%  ;
-                        background-color: $color-main;  
+                        background-color: $color-main; 
+                        color: #ffffff;                         
                     }            
                     &:focus{
                         border: $color-focus .2vw solid ;
