@@ -95,10 +95,16 @@ class Create extends Component {
         })
     }
 
-    sendData = (e) => {
-        const { id, name, questions } = this.state;
-        e.preventDefault();
-        fetch(`http://localhost:3500/create?id=${id}&name=${name}&questions=${JSON.stringify(questions)}`);
+    sendData = (e) => {        
+        e.preventDefault();        
+        fetch(`http://localhost:3500/create`, {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                'Content-Type': 'application/json',                
+            },
+        })
+
 
 
     }

@@ -3,8 +3,11 @@ const app = express();
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
-app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -74,29 +77,26 @@ app.get("/login", (req, res, next) => {
                 const passDb = result.password;
                 const { id } = result;
                 const hash = bcrypt.compareSync(password, passDb);
-                res.json(id)
-
+                if (hash) {
+                    res.json(id)
+                } else {
+                    res.json('Złe dane');
+                }
             })
 
         } else {
-            res.json(false)
+            res.json('Brak takiego uzytkownika');
         }
 
-
     })
-
-
-
-
 })
 
-app.get("/create", (req, res, next) => {
-    
-    
-let { questions, id, name } = req.query;
+app.post("/create", (req, res, next) => {
+
+    let { questions, id, name } = req.body;
     let surveyID;
     let questionID;
-    questions = JSON.parse(questions);
+    console.log(questions)
     con.query('INSERT INTO survey SET ?', {
         id_survey: 'NULL',
         id_user: id,
@@ -127,6 +127,16 @@ let { questions, id, name } = req.query;
 
 })
 
+app.get('/mysuv', (req, res, next) => {
+    const { id } = req.query;
+    con.query(`SELECT survey.id_survey , survey.name , questions.question , questions.multiply FROM survey JOIN questions ON questions.id_survey=survey.id_survey WHERE survey.id_user='${id}'`, (err, result) => {
+        console.log(result);
+        res.json(result);
+    });
+
+
+
+})
 
 
 app.listen(3500);

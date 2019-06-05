@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router ,Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./style.scss";
 import Header from "./header/Header"
 import Main from "./main/Main";
@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       login: '',
-      id:null
+      id: null
     }
   }
 
@@ -24,36 +24,37 @@ class App extends Component {
         login,
         id
       })
-   }
+    }
   }
 
   logOut = () => {
     sessionStorage.removeItem('loginSurveys');
     sessionStorage.removeItem('idSurveys');
     this.setState({
-      login:'',
-      id:null
+      login: '',
+      id: null
     })
   }
 
-  logInMethod = (e,login,password) => {
-    e.preventDefault();      
+  logInMethod = (e, login, password) => {
+    e.preventDefault();
     fetch(`http://localhost:3500/login?login=${login}&password=${password}`)
       .then(res => res.json())
-      .then(data => {  
-        console.log(data);
-        if (data) {
+      .then(data => {        
+        if (typeof(data)==='number') {
           sessionStorage.setItem('loginSurveys', login);
           sessionStorage.setItem('idSurveys', data);
           this.setState({
             login,
-            id:data,
+            id: data,
           })
-               
-        }     
-        
+        } else {
+          throw new Error(data)
+        }
+
       })
-      return true;
+      .catch(err => console.log(err))
+    //return true;
 
 
   }
@@ -61,7 +62,7 @@ class App extends Component {
 
 
   render() {
-    const { login,id } = this.state
+    const { login, id } = this.state
     return (
       <>
         <Router>
