@@ -10,7 +10,8 @@ const Header = (props) => {
             <nav>
                 <ul>
                     <li><Link className="link" to="/"> Home</Link></li>
-                    <li><Link className="link" to="/suv">Surveys</Link></li>
+                    <li className='innerUl'><Link className="link" to="/suv">Surveys </Link></li>
+                    {login ? <li><Link className="link" to="/mysuv">My</Link> </li> : ''}
                     <li><Link className="link" to="/create">Create</Link></li>
 
                 </ul>

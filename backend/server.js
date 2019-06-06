@@ -129,6 +129,7 @@ app.post("/create", (req, res, next) => {
 
 app.get('/mysuv', (req, res, next) => {
     const { id } = req.query;
+    console.log(id);
     con.query(`SELECT survey.id_survey , survey.name , questions.question , questions.multiply FROM survey JOIN questions ON questions.id_survey=survey.id_survey WHERE survey.id_user='${id}'`, (err, result) => {
         console.log(result);
         res.json(result);
